@@ -8,20 +8,20 @@ STRATEGY_FOLDER = "exampleStrats"
 RESULTS_FILE = "results.txt"
 
 pointsArray = [[-3,1],[-1,0]] # The i-j-th element of this array is how many points you receive if you do play i, and your opponent does play j.
-moveLabels = ["D","C"]
-# D = defect,     betray,       sabotage,  free-ride,     etc.
-# C = cooperate,  stay silent,  comply,    upload files,  etc.
+moveLabels = ["SW","ST"]
+# SW = swerve,     dare,       hawk,       etc.
+# ST = straight,  dove,  chicken,      etc.
 
 
 # Returns a 2-by-n numpy array. The first axis is which player (0 = us, 1 = opponent)
 # The second axis is which turn. (0 = first turn, 1 = next turn, etc.
 # For example, it might have the values
 #
-# [[0 0 1]       a.k.a.    D D C
-#  [1 1 1]]      a.k.a.    C C C
+# [[0 0 1]       a.k.a.    SW SW ST
+#  [1 1 1]]      a.k.a.    ST ST ST
 #
-# if there have been 3 turns, and we have defected twice then cooperated once,
-# and our opponent has cooperated all three times.
+# if there have been 3 turns, and we have swerved twice then went straight once,
+# and our opponent has gone straight all three times.
 def getVisibleHistory(history, player, turn):
     historySoFar = history[:,:turn].copy()
     if player == 1:
@@ -30,7 +30,7 @@ def getVisibleHistory(history, player, turn):
 
 def strategyMove(move):
     if type(move) is str:
-        defects = ["defect","tell truth"]
+        defects = ["swerve","straight"]
         return 0 if (move in defects) else 1
     else:
         # Coerce all moves to be 0 or 1 so strategies can safely assume 0/1's only
