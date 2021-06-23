@@ -7,7 +7,7 @@ import random
 STRATEGY_FOLDER = "exampleStrats"
 RESULTS_FILE = "results.txt"
 
-pointsArray = [[-3,1],[-1,0]] # The i-j-th element of this array is how many points you receive if you do play i, and your opponent does play j.
+pointsArray = [[0,1],[-1,-3]] # The i-j-th element of this array is how many points you receive if you do play i, and your opponent does play j.
 moveLabels = ["SW","ST"]
 # SW = swerve,     dare,       hawk,       etc.
 # ST = straight,  dove,  chicken,      etc.
